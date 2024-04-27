@@ -27,7 +27,7 @@ useEffect(() => {
     const handleAddChoice = async() =>{
         const lastChoice = choices[choices.length - 1]
         const lastChoiceLetter = lastChoice ? lastChoice.charAt(0) : "A"
-        const newChoiceLetter = string.fromCharCode(lastChoiceLetter.charCodeAt(0))
+        const newChoiceLetter = String.fromCharCode(lastChoiceLetter.charCodeAt(0))
         const newChoice = `${newChoiceLetter}.`
         setChoices([...choices, newChoice])
     }
