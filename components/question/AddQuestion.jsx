@@ -27,7 +27,7 @@ useEffect(() => {
     const handleAddChoice = async() =>{
         const lastChoice = choices[choices.length - 1]
         const lastChoiceLetter = lastChoice ? lastChoice.charAt(0) : "A"
-        const newChoiceLetter = String.fromCharCode(lastChoiceLetter.charCodeAt(0))
+        const newChoiceLetter = String.fromCharCode(lastChoiceLetter.charCodeAt(0) + 1)
         const newChoice = `${newChoiceLetter}.`
         setChoices([...choices, newChoice])
     }
@@ -153,7 +153,7 @@ useEffect(() => {
                                     value={questionType}
                                     onChange={(e) => setQuestionType(e.target.value)}>
                                         <option value={"single"}>Single Answer</option>
-                                        <option value={"multiple"}>Multipme Answer</option>
+                                        <option value={"multiple"}>Multiple Answer</option>
                                     </select>
                                 </div>
                                 <div className="mb-3">
@@ -183,14 +183,14 @@ useEffect(() => {
                                         Add Choice
                                     </button>
 
-                                    <select 
+                                    {/* <select 
                                     className="form-control"
                                     id="question-type"
                                     value={questionType}
                                     onChange={(e) => setQuestionType(e.target.value)}>
                                         <option value={"single"}>Single Answer</option>
                                         <option value={"multiple"}>Multipme Answer</option>
-                                    </select>
+                                    </select> */}
                                 </div>
 
                                 {questionType === "single" && (
@@ -213,7 +213,7 @@ useEffect(() => {
                                             Correct Answer(s)
                                         </label>
                                         {correctAnswers.map((answer, index) => (
-                                            <div>
+                                            <div key={index} className="input-group mb-3">
                                                 <input
                                                     type="text"
                                                     value={answer}
@@ -222,9 +222,9 @@ useEffect(() => {
                                                 />
                                                 {index > 0 && (
                                                     <button
-                                                    type="buttom"
-                                                    className="btn btn-danger btn-sm"
-                                                    onClick={() => handleRemoveCorrectAnswer(index)}>
+                                                    type="button"
+                                                    onClick={() => handleRemoveCorrectAnswer(index)}
+                                                    className="btn btn-outline-danger btn-sm">
                                                         Remove
                                                     </button>
                                                 )}
