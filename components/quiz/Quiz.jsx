@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Quiz = () => {
     const [quizQuestions, setQuizQuestions] = useState([{
@@ -152,7 +153,7 @@ const Quiz = () => {
 								answer.id === quizQuestions[currentQuestionIndex]?.id || answer.answer.length > 0
 						)
 					}>
-					{currentQuestionIndex === quizQuestions.length - 1 ? "Submit quiz" : "Next question"}
+					{currentQuestionIndex === quizQuestions.length - 1 ? "Submit Quiz" : "Next Question"}
 				</button>
 			</div>
 		</div>
