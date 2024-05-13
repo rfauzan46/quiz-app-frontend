@@ -42,7 +42,7 @@ useEffect(() => {
     setSelectedSubject(e.target.value)
   }
 
-  const handleNumOfQuestionsChange = () => {
+  const handleNumOfQuestionsChange = (e) => {
     setSelectedNumOfQuestions(e.target.value)
   }
 
@@ -104,7 +104,7 @@ useEffect(() => {
   }
   return (
     <section className='mt-5'>
-        <h3 style={{color: GrayText}}>Welcome to Quiz Online!</h3>
+        <h3>Welcome to Quiz Online!</h3>
         {renderProgressBar()}
         <div className='card'>
             <div className='card-body'>

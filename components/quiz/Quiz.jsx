@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import AnswerOptions from '../../utils/AnswerOptions'
 
 const Quiz = () => {
     const [quizQuestions, setQuizQuestions] = useState([{
