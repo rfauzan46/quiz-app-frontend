@@ -12,15 +12,17 @@ const Quiz = () => {
 	const [totalScores, setTotalScores] = useState(0)
 	const location = useLocation()
 	const navigate = useNavigate()
-	const { selectedSubject, selectedNumQuestions } = location.state
+	const { selectedSubject, selectedNumofQuestions } = location.state
 
 	useEffect(() => {
+		console.log("onMount")
 		fetchQuizData()
 	}, [])
 
 	const fetchQuizData = async () => {
-		if (selectedNumQuestions && selectedSubject) {
-			const questions = await fetchQuizForUser(selectedNumQuestions, selectedSubject)
+		console.log('masuk [ak eko ', selectedNumofQuestions, selectedSubject)
+		if (selectedNumofQuestions && selectedSubject) {
+			const questions = await fetchQuizForUser(selectedNumofQuestions, selectedSubject)
 			setQuizQuestions(questions)
 		}
 	}
@@ -85,28 +87,28 @@ const Quiz = () => {
 	}
 
 
-const handleSubmit = () => {
-  let scores = 0;
-  quizQuestions.forEach((question) => {
-    const selectedAnswer = selectedAnswers.find((answer) => answer.id === question.id);
-    if (selectedAnswer) {
-      const selectedOptions = Array.isArray(selectedAnswer.answer)
-        ? selectedAnswer.answer.map((option) => option.charAt(0))
-        : [selectedAnswer.answer.charAt(0)];
-      const correctOptions = Array.isArray(question.correctAnswers)
-        ? question.correctAnswers.map((option) => option.charAt(0))
-        : [question.correctAnswers.charAt(0)];
-      const isCorrect = selectedOptions.length === correctOptions.length && selectedOptions.every((option) => correctOptions.includes(option));
-      if (isCorrect) {
-        scores++;
-      }
-    }
-  });
-  setTotalScores(scores);
-  setSelectedAnswers([]);
-  setCurrentQuestionIndex(0);
-  navigate("/quiz-result", { state: { quizQuestions, totalScores: scores } });
-};
+	const handleSubmit = () => {
+		let scores = 0;
+		quizQuestions.forEach((question) => {
+			const selectedAnswer = selectedAnswers.find((answer) => answer.id === question.id);
+			if (selectedAnswer) {
+				const selectedOptions = Array.isArray(selectedAnswer.answer)
+					? selectedAnswer.answer.map((option) => option.charAt(0))
+					: [selectedAnswer.answer.charAt(0)];
+				const correctOptions = Array.isArray(question.correctAnswers)
+					? question.correctAnswers.map((option) => option.charAt(0))
+					: [question.correctAnswers.charAt(0)];
+				const isCorrect = selectedOptions.length === correctOptions.length && selectedOptions.every((option) => correctOptions.includes(option));
+				if (isCorrect) {
+					scores++;
+				}
+			}
+		});
+		setTotalScores(scores);
+		setSelectedAnswers([]);
+		setCurrentQuestionIndex(0);
+		navigate("/quiz-result", { state: { quizQuestions, totalScores: scores } });
+	};
 
 
 	const handleNextQuestion = () => {
@@ -149,9 +151,8 @@ const handleSubmit = () => {
 					Previous question
 				</button>
 				<button
-					className={`btn btn-sm btn-info ${
-						currentQuestionIndex === quizQuestions.length - 1 && "btn btn-sm btn-warning"
-					}`}
+					className={`btn btn-sm btn-info ${currentQuestionIndex === quizQuestions.length - 1 && "btn btn-sm btn-warning"
+						}`}
 					onClick={handleNextQuestion}
 					disabled={
 						!selectedAnswers.find(
