@@ -28,6 +28,8 @@ export const getAllQuestions = async() =>{
 export const fetchQuizForUser = async(number, subject) =>{
     try {
         const response = await api.get(`/quiz/fetch-questions-for-user?numOfQuestions=${number}&subject=${subject}`)
+        console.log('lewat sini')
+        return response.data
     } catch (error) {
         console.error(error)
         return []

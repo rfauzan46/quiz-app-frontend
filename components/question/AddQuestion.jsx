@@ -126,7 +126,7 @@ useEffect(() => {
                                         />
                                         <button
                                         type="button"
-                                        className="btn btn-outlint-primary btn-sm mt-2"
+                                        className="btn btn-outline-primary btn-sm mt-2"
                                         onClick={handleAddSubject}>
                                             Add Subject
                                         </button>
