@@ -17,7 +17,7 @@ const QuizResult = () => {
         <hr/>
         <h5>You answered {totalScores} out of {numOfQuestions} questions correctly.</h5>
         <p>Your total score is {percentage}%.</p>
-        <button className='btn btn-primary btn-sm'>
+        <button className='btn btn-primary btn-sm' onClick={handleRetakeQuiz}>
             Retake this quiz
         </button>
     </section>

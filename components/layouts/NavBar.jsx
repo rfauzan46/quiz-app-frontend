@@ -1,5 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const Navbar = () => {
 	return (
@@ -14,7 +15,7 @@ const Navbar = () => {
 					data-bs-toggle="collapse"
 					data-bs-target="#navbarNav"
 					aria-controls="navbarNav"
-					aria-expanded="false"
+					aria-expanded="true"
 					aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
@@ -25,7 +26,6 @@ const Navbar = () => {
 								Admin
 							</NavLink>
 						</li>
-
 						<li className="nav-item">
 							<NavLink className="nav-link" to={"/quiz-stepper"}>
 								Take Quiz

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteQuestion, getAllQuestions } from '../../utils/QuizService'
+import { Link } from 'react-router-dom'
+import { FaPlus } from 'react-icons/fa'
 
 const GetAllQuiz = () => {
     const[question, setQuestions] = useState([
@@ -48,7 +50,9 @@ useEffect(() => {
                     <h4>All Quiz Questions</h4>
                 </div>
                 <div className='col-md-4 d-flex justify-content-end'>
-                    {/* Todo: add a link to naviagate to add New question form */}
+                    <Link to={"/create-quiz"}>
+						<FaPlus /> Add Question
+					</Link>
                 </div>
             </div>
             <hr/>
